@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <style>
+        /* CSS styles for login page */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 150px;
+        }
+
+        .input-field {
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #337ab7;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <div id="error-msg" class="error"></div>
+        <form id="login-form" action="#">
+            <div class="input-field">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-field">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button class="btn" type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>
+        // script.js
+
+        document.getElementById('login-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Check if the username and password match
+            if (username === 'a' && password === 'p') {
+                console.log('Login successful');
+                console.log('Username:', username);
+                console.log('Password:', password);
+                window.location.href = 'সম্পূর্ণ কমপ্লিট.html'; // Redirect to the dashboard after successful login
+            } else {
+                document.getElementById('error-msg').textContent = 'Invalid username or password';
+
+                // Check if the password matches after the first login
+                if (localStorage.getItem('firstLogin') === 'true' && password === localStorage.getItem('password')) {
+                    console.log('Login successful');
+                    console.log('Username:', username);
+                    console.log('Password:', password);
+                    window.location.href = 'সম্পূর্ণ কমপ্লিট.html'; // Redirect to the dashboard after successful login
+                } else {
+                    // Store the password for future logins
+                    localStorage.setItem('firstLogin', 'true');
+                    localStorage.setItem('password', password);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <button class="button" onclick="displayText()">লিখা দেখাও</button>
+    <p id="text"></p>
+
+    <script>
+        function displayText() {
+            var textElement = document.getElementById("text");
+            if (textElement.innerHTML === "") {
+                textElement.innerHTML = "এক লেখা আসলো";
+            } else {
+                textElement.innerHTML = "একটু লেখা আসলো";
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Toggle Like Icon</title>
+  <style>
+    .like-icon {
+      display: inline-block;
+      cursor: pointer;
+     
+    }
+
+    .like-button {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: gray;
+    }
+
+    .like-counter {
+      display: inline-block;
+      margin-left: 5px;
+    }
+
+    .liked {
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div class="like-icon">
+    <span class="like-button"></span>
+    <span class="like-counter">0</span>
+  </div>
+
+  <script>
+    // Get the like button and counter elements
+    var likeButton = document.querySelector('.like-button');
+    var likeCounter = document.querySelector('.like-counter');
+
+    // Set the initial state
+    var isLiked = false;
+    var count = 0;
+
+    // Attach click event listener to the like button
+    likeButton.addEventListener('click', function() {
+      if (isLiked) {
+        // Unlike
+        isLiked = false;
+        count--;
+        likeButton.classList.remove('liked');
+      } else {
+        // Like
+        isLiked = true;
+        count++;
+        likeButton.classList.add('liked');
+      }
+
+      // Update the counter text
+      likeCounter.textContent = count;
+    });
+  </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 5px;
+    }
+
+    .form-group input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+
+    .error-message {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Registration Form</h2>
+    <form id="registrationForm">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <span id="usernameError" class="error-message"></span>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <span id="emailError" class="error-message"></span>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <span id="passwordError" class="error-message"></span>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Register">
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Clear previous error messages
+      clearErrorMessages();
+
+      // Get input values
+      var username = document.getElementById('username').value;
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+
+      // Validate username
+      if (username.length < 3) {
+        showError('usernameError', 'Username must be at least 3 characters long.');
+        return;
+      }
+
+      // Validate email
+      if (!validateEmail(email)) {
+        showError('emailError', 'Please enter a valid email address.');
+        return;
+      }
+
+      // Validate password
+      if (password.length < 6) {
+        showError('passwordError', 'Password must be at least 6 characters long.');
+        return;
+      }
+
+      // Registration successful
+      alert('Registration successful!');
+      // Add your logic here for what should happen after successful registration
+    });
+
+    // Helper function to validate email address
+    function validateEmail(email) {
+      var re = /\S+@\S+\.\S+/;
+      return re.test(email);
+    }
+
+    // Helper function to display error messages
+    function showError(elementId, message) {
+      var errorElement = document.getElementById(elementId);
+      errorElement.textContent = message;
+    }
+
+    // Helper function to clear error messages
+    function clearErrorMessages() {
+      var errorElements = document.getElementsByClassName('error-message');
+      for (var i = 0; i < errorElements.length; i++) {
+        errorElements[i].textContent = '';
+      }
+    }
+  </script>
+</body>
+</html>
